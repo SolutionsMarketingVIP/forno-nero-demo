@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wood-Fired Pizza Downtown Montreal — Forno Nero</title>
+<meta name="description" content="Neapolitan-style pizza baked in a blazing wood oven on Saint-Laurent Blvd. Open late, delivered hot across downtown Montreal. Order tonight.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Forno Nero",
+  "image": "neon-logo.png",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "3811 Boulevard Saint-Laurent",
+    "addressLocality": "Montréal",
+    "addressRegion": "QC",
+    "addressCountry": "CA"
+  },
+  "telephone": "+1-514-555-0187",
+  "priceRange": "$$",
+  "servesCuisine": ["Pizza", "Italian"],
+  "openingHours": "Mo-Su 16:00-02:00"
+}
+</script>
+<style>
+  :root {
+    --neon-orange: #ff7a18;
+    --neon-red: #ff2d55;
+    --neon-glow: #ffb340;
+    --dark: #0a0a0f;
+    --card: #14141c;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: var(--dark); color: #eee; line-height: 1.7; overflow-x: hidden;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 5%; position: sticky; top: 0; z-index: 100;
+    background: rgba(10,10,15,0.85); backdrop-filter: blur(10px);
+    border-bottom: 1px solid #222;
+  }
+  .nav-logo {
+    font-size: 1.5rem; font-weight: 900; letter-spacing: 2px; color: var(--neon-orange);
+    text-decoration: none;
+    text-shadow: 0 0 8px var(--neon-orange), 0 0 22px var(--neon-orange);
+    animation: neonFlicker 6s infinite;
+  }
+  @keyframes neonFlicker {
+    0%, 100% { opacity: 1; }
+    91% { opacity: 1; } 92% { opacity: 0.4; } 93% { opacity: 1; }
+    96% { opacity: 0.7; } 97% { opacity: 1; }
+  }
+  nav .links a { color: #ccc; text-decoration: none; margin-left: 1.4rem; font-size: .92rem; transition: color .2s, text-shadow .2s; }
+  nav .links a:hover { color: var(--neon-glow); text-shadow: 0 0 10px var(--neon-orange); }
+  .lang-btn {
+    background: none; border: 1px solid var(--neon-orange); color: var(--neon-orange);
+    padding: 6px 16px; border-radius: 20px; cursor: pointer; font-weight: bold;
+    margin-left: 1.4rem; font-size: .85rem;
+  }
+  .lang-btn:hover { box-shadow: 0 0 12px var(--neon-orange); }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 92vh; display: flex; flex-direction: column;
+    justify-content: center; align-items: center; text-align: center;
+    position: relative; padding: 60px 24px;
+    background: radial-gradient(ellipse at 50% 80%, rgba(255,122,24,.18), transparent 60%),
+                radial-gradient(ellipse at 50% 0%, rgba(255,45,85,.10), transparent 50%);
+  }
+  .hero .sign-img {
+    width: 210px; border-radius: 12px; filter: drop-shadow(0 0 25px rgba(255,140,40,.55));
+    animation: glowPulse 3.5s ease-in-out infinite;
+    margin-bottom: 24px;
+  }
+  @keyframes glowPulse {
+    0%, 100% { filter: drop-shadow(0 0 18px rgba(255,140,40,.45)); transform: scale(1); }
+    50% { filter: drop-shadow(0 0 38px rgba(255,140,40,.8)); transform: scale(1.02); }
+  }
+  .hero h1 {
+    font-size: clamp(2.4rem, 6vw, 4.2rem); font-weight: 900; letter-spacing: 1px;
+    color: #fff;
+    text-shadow: 0 0 12px var(--neon-orange), 0 0 40px rgba(255,122,24,.5);
+  }
+  .hero h1 em { font-style: normal; color: var(--neon-red); text-shadow: 0 0 12px var(--neon-red), 0 0 40px rgba(255,45,85,.6); }
+  .hero p { max-width: 560px; margin: 18px auto 30px; color: #bbb; font-size: 1.15rem; }
+  .glow-btn {
+    display: inline-block; text-decoration: none; font-weight: bold; font-size: 1.05rem;
+    color: #0a0a0f; background: var(--neon-glow);
+    padding: 16px 42px; border-radius: 40px;
+    box-shadow: 0 0 20px rgba(255,179,64,.55), 0 0 50px rgba(255,179,64,.25);
+    transition: transform .25s, box-shadow .25s;
+    animation: glowPulse 3.5s ease-in-out infinite;
+  }
+  .glow-btn:hover { transform: scale(1.07); box-shadow: 0 0 30px rgba(255,179,64,.9); }
+
+  /* floating ingredients in hero */
+  .float-ing { position: absolute; font-size: 2.4rem; opacity: .35; animation: floaty 7s ease-in-out infinite; user-select: none; }
+  @keyframes floaty {
+    0%, 100% { transform: translateY(0) rotate(-8deg); }
+    50% { transform: translateY(-28px) rotate(10deg); }
+  }
+
+  /* ===== TICKER ===== */
+  .ticker {
+    background: linear-gradient(90deg, var(--neon-red), var(--neon-orange), var(--neon-red));
+    overflow: hidden; white-space: nowrap; padding: 10px 0; font-weight: bold; color: #1a0a00;
+  }
+  .ticker span { display: inline-block; animation: scrollLeft 22s linear infinite; font-size: .95rem; letter-spacing: 1px; }
+  @keyframes scrollLeft { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+  /* ===== SECTIONS ===== */
+  section { max-width: 1100px; margin: 0 auto; padding: 80px 24px; }
+  .reveal { opacity: 0; transform: translateY(36px); transition: opacity .7s ease, transform .7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  h2.sec-title { font-size: 2.1rem; text-align: center; margin-bottom: 8px; color: #fff; }
+  h2.sec-title span { color: var(--neon-orange); text-shadow: 0 0 14px var(--neon-orange); }
+  .sec-sub { text-align: center; color: #888; margin-bottom: 44px; }
+
+  /* ===== MENU CARDS ===== */
+  .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 22px; }
+  .dish {
+    background: var(--card); border: 1px solid #232330; border-radius: 14px;
+    padding: 26px; transition: transform .3s, border-color .3s, box-shadow .3s;
+  }
+  .dish:hover {
+    transform: translateY(-8px) scale(1.015);
+    border-color: var(--neon-orange);
+    box-shadow: 0 0 24px rgba(255,122,24,.35), 0 14px 34px rgba(0,0,0,.5);
+  }
+  .dish .emoji { font-size: 2.4rem; display: block; margin-bottom: 12px; filter: drop-shadow(0 0 10px rgba(255,140,40,.5)); }
+  .dish h3 { color: var(--neon-glow); display: flex; justify-content: space-between; font-size: 1.15rem; }
+  .dish h3 .price { color: #fff; }
+  .dish p { color: #999; font-size: .92rem; margin-top: 8px; }
+
+  /* ===== STATS ===== */
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px,1fr)); gap: 20px; text-align: center; }
+  .stat {
+    background: var(--card); border-radius: 14px; padding: 30px 18px;
+    border: 1px solid #232330;
+  }
+  .stat .big { font-size: 2.4rem; font-weight: 900; color: var(--neon-red); text-shadow: 0 0 16px rgba(255,45,85,.6); }
+  .stat .lbl { color: #999; font-size: .88rem; margin-top: 4px; }
+
+  /* ===== FOOTER ===== */
+  footer { text-align: center; padding: 46px 20px; color: #777; border-top: 1px solid #1c1c26; font-size: .9rem; }
+  footer .fn { color: var(--neon-orange); font-weight: 900; letter-spacing: 2px; text-shadow: 0 0 8px var(--neon-orange); }
+
+  /* ===== LANG TOGGLE (same pattern as your main site) ===== */
+  .fr { display: none; }
+  body.lang-fr .en { display: none; }
+  body.lang-fr .fr { display: block; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body class="lang-en">
+
+<nav>
+  <a href="#" class="nav-logo">FORNO NERO</a>
+  <div class="links">
+    <a href="#menu"><span class="en">Menu</span><span class="fr">Menu</span></a>
+    <a href="#story"><span class="en">Story</span><span class="fr">Histoire</span></a>
+    <a href="#visit"><span class="en">Visit</span><span class="fr">Nous Trouver</span></a>
+    <button class="lang-btn" onclick="toggleLang()" id="langBtn">FR</button>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="float-ing" style="left:8%; top:22%;">🍅</div>
+  <div class="float-ing" style="right:10%; top:18%; animation-delay:1.2s;">🧄</div>
+  <div class="float-ing" style="left:15%; bottom:20%; animation-delay:2.1s;">🌿</div>
+  <div class="float-ing" style="right:7%; bottom:26%; animation-delay:3s;">🧀</div>
+  <img class="sign-img" src="neon-logo.png" alt="Forno Nero glowing neon pizza slice sign, wood-fired pizzeria in Montreal">
+  <h1><span class="en">Fire. Flour. <em>Midnight.</em></span><span class="fr">Le feu. La farine. <em>Minuit.</em></span></h1>
+  <p>
+    <span class="en">Naples-style pizza from a blazing wood oven, on Saint-Laurent Boulevard. Open until 2 AM, delivered hot across downtown.</span>
+    <span class="fr">Pizza napolitaine d'un four à bois ardent, sur le boulevard Saint-Laurent. Ouvert jusqu'à 2 h, livré chaud partout au centre-ville.</span>
+  </p>
+  <a href="#menu" class="glow-btn"><span class="en">Order Tonight</span><span class="fr">Commander ce soir</span></a>
+</div>
+
+<div class="ticker">
+  <span>🍕 SLICE OF THE WEEK: TRUFFLE FUNGHI &nbsp;&nbsp;•&nbsp;&nbsp; 🔥 HAPPY HOUR 4PM–6PM: $3 OFF ANY PIE &nbsp;&nbsp;•&nbsp;&nbsp; 🛵 FREE DELIVERY OVER $35 DOWNTOWN &nbsp;&nbsp;•&nbsp;&nbsp; 🌙 OPEN TILL 2 AM &nbsp;&nbsp;•&nbsp;&nbsp; 🍕 SLICE OF THE WEEK: TRUFFLE FUNGHI &nbsp;&nbsp;•&nbsp;&nbsp; 🔥 HAPPY HOUR 4PM–6PM: $3 OFF ANY PIE &nbsp;&nbsp;•&nbsp;&nbsp; 🛵 FREE DELIVERY OVER $35 DOWNTOWN &nbsp;&nbsp;•&nbsp;&nbsp; 🌙 OPEN TILL 2 AM &nbsp;&nbsp;•&nbsp;&nbsp;</span>
+</div>
+
+<section id="menu">
+  <div class="reveal">
+    <h2 class="sec-title"><span class="en">Straight From <span>The Fire</span></span><span class="fr">Tout Droit du <span>Feu</span></span></h2>
+    <p class="sec-sub">
+      <span class="en">90 seconds at 450°C. Leopard-spotted crust. No shortcuts.</span>
+      <span class="fr">90 secondes à 450 °C. Croûte léopardiée. Aucun raccourci.</span>
+    </p>
+  </div>
+  <div class="menu-grid">
+    <div class="dish reveal">
+      <span class="emoji">🍕</span>
+      <h3><span class="en">Margherita Rosso</span><span class="fr">Margherita Rosso</span> <span class="price">$17</span></h3>
+      <p><span class="en">Crushed San Marzano, buffalo mozzarella, basil torn by hand, olive oil from Puglia.</span><span class="fr">San Marzano écrasées, mozzarella de bufflonne, basilic effeuillé à la main, huile des Pouilles.</span></p>
+    </div>
+    <div class="dish reveal">
+      <span class="emoji">🌶️</span>
+      <h3><span class="en">Diavola Rossa</span><span class="fr">Diavola Rossa</span> <span class="price">$20</span></h3>
+      <p><span class="en">Spicy Calabrian nduja, hot honey drizzle, fior di latte. Dangerously good.</span><span class="fr">Nduja calabraise piquante, filet de miel épicé, fior di latte. Dangereusement bon.</span></p>
+    </div>
+    <div class="dish reveal">
+      <span class="emoji">🍄</span>
+      <h3><span class="en">Tartufo Nero</span><span class="fr">Tartufo Nero</span> <span class="price">$23</span></h3>
+      <p><span class="en">Wild mushrooms, black truffle oil, smoked scamorza — our famous slice of the week.</span><span class="fr">Champignons sauvages, huile de truffe noire, scamorza fumée — notre tranche vedette de la semaine.</span></p>
+    </div>
+    <div class="dish reveal">
+      <span class="emoji">🥓</span>
+      <h3><span class="en">Pancetta Affumicata</span><span class="fr">Pancetta Affumicata</span> <span class="price">$21</span></h3>
+      <p><span class="en">Smoked pancetta, caramelized onion, gorgonzola dolce, cracked pepper.</span><span class="fr">Pancetta fumée, oignon caramélisé, gorgonzola dolce, poivre concassé.</span></p>
+    </div>
+    <div class="dish reveal">
+      <span class="emoji">🥬</span>
+      <h3><span class="en">Verde Vegana</span><span class="fr">Verde Vegana</span> <span class="price">$19</span></h3>
+      <p><span class="en">Cashew mozzarella, pistachio pesto, zucchini ribbons, lemon zest. Fully vegan, fully delicious.</span><span class="fr">Mozzarella de cajou, pesto de pistache, courgettes en rubans, zeste de citron. 100 % végane, 100 % délicieux.</span></p>
+    </div>
+    <div class="dish reveal">
+      <span class="emoji">🍫</span>
+      <h3><span class="en">Nutella Calzone</span><span class="fr">Calzone Nutella</span> <span class="price">$14</span></h3>
+      <p><span class="en">Folded dessert calzone, warm Nutella, dusted sugar, sea salt. Order it. Thank us later.</span><span class="fr">Calzone dessert pliée, Nutella chaud, sucre glacé, sel de mer. Commandez. Merci plus tard.</span></p>
+    </div>
+  </div>
+</section>
+
+<section id="story">
+  <div class="reveal">
+    <h2 class="sec-title"><span class="en">Why <span>Nero?</span></span><span class="fr">Pourquoi <span>Nero ?</span></span></h2>
+    <p class="sec-sub">
+      <span class="en">"Nero" means black — the char on our crust, the neon on our door, the mood after midnight.</span>
+      <span class="fr">« Nero » signifie noir — le charbon sur notre croûte, le néon sur notre porte, l'ambiance après minuit.</span>
+    </p>
+  </div>
+  <div class="stats">
+    <div class="stat reveal"><div class="big">48h</div><div class="lbl"><span class="en">Cold-fermented dough</span><span class="fr">Pâte à fermentation lente</span></div></div>
+    <div class="stat reveal"><div class="big">90s</div><div class="lbl"><span class="en">In the wood oven</span><span class="fr">Au four à bois</span></div></div>
+    <div class="stat reveal"><div class="big">2AM</div><div class="lbl"><span class="en">Open late, every night</span><span class="fr">Ouvert tard, tous les soirs</span></div></div>
+    <div class="stat reveal"><div class="big">350°</div><div class="lbl"><span class="en">Charcoal-black crust spots — earned, not faked</span><span class="fr">Taches noires de croûte — gagnées, pas truquées</span></div></div>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="reveal">
+    <h2 class="sec-title"><span class="en">Find The <span>Glow</span></span><span class="fr">Suivez la <span>Lueur</span></span></h2>
+    <p class="sec-sub">
+      <span class="en">3811 Boulevard Saint-Laurent, Montréal — you can't miss the sign. Open daily 4 PM – 2 AM. (514) 555-0187 · hello@fornonero.ca</span>
+      <span class="fr">3811, boulevard Saint-Laurent, Montréal — impossible de rater l'enseigne. Ouvert tous les jours de 16 h à 2 h. (514) 555-0187 · bonjour@fornonero.ca</span>
+    </p>
+  </div>
+</section>
+
+<footer>
+  <p class="fn">FORNO NERO</p>
+  <p>© 2026 — <span class="en">Concept demo by Solutions Marketing VIP — Plan B: the neon experience.</span><span class="fr">Démo conceptuelle par Solutions Marketing VIP — Plan B : l'expérience néon.</span></p>
+</footer>
+
+<script>
+function toggleLang() {
+  var b = document.body;
+  var btn = document.getElementById('langBtn');
+  if (b.classList.contains('lang-en')) {
+    b.classList.remove('lang-en'); b.classList.add('lang-fr');
+    btn.textContent = 'EN';
+  } else {
+    b.classList.remove('lang-fr'); b.classList.add('lang-en');
+    btn.textContent = 'FR';
+  }
+}
+
+// Scroll-reveal animation
+var observer = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+</script>
+
+</body>
+</html>
